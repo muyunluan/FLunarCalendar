@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/id_week_header"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/style_calendar_header_text"
+            android:text="@string/calendar_sunday" />
+
+        <TextView
+            style="@style/style_calendar_header_text"
+            android:text="@string/calendar_monday" />
+
+        <TextView
+            style="@style/style_calendar_header_text"
+            android:text="@string/calendar_tuesday" />
+
+        <TextView
+            style="@style/style_calendar_header_text"
+            android:text="@string/calendar_wednesday" />
+
+        <TextView
+            style="@style/style_calendar_header_text"
+            android:text="@string/calendar_thursday" />
+
+        <TextView
+            style="@style/style_calendar_header_text"
+            android:text="@string/calendar_friday" />
+
+        <TextView
+            style="@style/style_calendar_header_text"
+            android:text="@string/calendar_saturday" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/id_bottom_event"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/id_textview_event"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="test"/>
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/id_bottom_action"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+            <!--style="@style/style_calendar_bottom_container"-->
+            <!--android:id="@+id/id_textview_today"-->
+            <!--android:text="@string/action_today"-->
+            <!--android:gravity="left|center"-->
+            <!--android:onClick="onTodayClick"/>-->
+        <!--<TextView-->
+            <!--style="@style/style_calendar_bottom_container"-->
+            <!--android:id="@+id/id_textview_calendars"-->
+            <!--android:text="@string/action_calendars"-->
+            <!--android:gravity="center"-->
+            <!--android:onClick="onCalendarsClick"/>-->
+        <!--<TextView-->
+            <!--style="@style/style_calendar_bottom_container"-->
+            <!--android:id="@+id/id_textview_inbox"-->
+            <!--android:text="@string/action_inbox"-->
+            <!--android:gravity="right|center"-->
+            <!--android:onClick="onInboxClick"/>-->
+    <!--</LinearLayout>-->
+
+</LinearLayout>

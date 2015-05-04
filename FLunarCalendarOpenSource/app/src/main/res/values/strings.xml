@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">FLunarCalendar</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_today">Today</string>
+    <string name="action_calendars">Calendars</string>
+    <string name="action_inbox">Inbox</string>
+    <string name="calendar_sunday">Sun</string>
+    <string name="calendar_monday">Mon</string>
+    <string name="calendar_tuesday">Tue</string>
+    <string name="calendar_wednesday">Wed</string>
+    <string name="calendar_thursday">Thu</string>
+    <string name="calendar_friday">Fri</string>
+    <string name="calendar_saturday">Sat</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

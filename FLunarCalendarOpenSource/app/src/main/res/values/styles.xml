@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="style_calendar_header_container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="style_calendar_header_text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/activity_horizontal_margin</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="style_calendar_bottom_container">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/activity_horizontal_margin</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+</resources>
