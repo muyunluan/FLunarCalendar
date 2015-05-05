@@ -50,7 +50,7 @@
     <LinearLayout
         android:id="@+id/id_bottom_event"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="100dp"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/id_textview_event"

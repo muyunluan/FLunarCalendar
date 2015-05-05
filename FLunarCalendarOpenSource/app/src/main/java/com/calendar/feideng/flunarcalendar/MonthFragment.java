@@ -6,7 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.TextView;
+
+import java.util.Calendar;
 
 
 /**
@@ -49,9 +52,12 @@ public class MonthFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.month_fragment_gridview, container, false);
+        GridView gridView = (GridView)rootView.findViewById(R.id.id_month_gridview);
+        Calendar calendar = Calendar.getInstance();
         TextView textView = new TextView(getActivity());
         textView.setText(R.string.hello_blank_fragment);
-        return textView;
+        return rootView;
     }
 
     /**
