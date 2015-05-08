@@ -1,6 +1,7 @@
 package com.calendar.feideng.flunarcalendar;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -26,6 +27,8 @@ public class MonthFragment extends Fragment {
      * The fragment's page number, which is set to the argument value for {@link #ARG_PAGE}.
      */
     private int mPageNumber;
+
+    private MonthFragmentAdapter monthFragmentAdapter;
 
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
@@ -54,6 +57,8 @@ public class MonthFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.month_fragment_gridview, container, false);
         GridView gridView = (GridView)rootView.findViewById(R.id.id_month_gridview);
+        monthFragmentAdapter = new MonthFragmentAdapter(rootView.getContext());
+        gridView.setAdapter(monthFragmentAdapter);
         Calendar calendar = Calendar.getInstance();
         TextView textView = new TextView(getActivity());
         textView.setText(R.string.hello_blank_fragment);
