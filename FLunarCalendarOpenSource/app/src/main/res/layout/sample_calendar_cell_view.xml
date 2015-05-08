@@ -1,9 +1,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/id_calendar_cell_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.calendar.feideng.flunarcalendar.CalendarCellView
+        android:id="@+id/id_calendar_cell_view"
         android:background="#ccc"
         android:layout_width="300dp"
         android:layout_height="300dp"

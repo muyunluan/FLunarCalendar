@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 /**
  * Created by fdeng on 5/4/15.
@@ -39,12 +38,19 @@ public class MonthFragmentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        /*
         if(convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.calendar_gridview_cell, null);
         }
         TextView textView = (TextView) convertView.findViewById(R.id.id_gridview_cell_textview);
         String text = mPosition + "adapter";
         textView.setText(text);
+        */
+        if(convertView == null) {
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.sample_calendar_cell_view, null);
+        }
+        CalendarCellView calendarCellView = (CalendarCellView) convertView.findViewById(R.id.id_calendar_cell_view);
+
         return convertView;
     }
 }
