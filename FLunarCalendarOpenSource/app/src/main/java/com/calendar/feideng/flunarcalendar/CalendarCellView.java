@@ -15,10 +15,10 @@ import android.view.View;
  * TODO: document your custom view class.
  */
 public class CalendarCellView extends View {
-    private String mExampleString; // TODO: use a default from R.string...
-    private int mExampleColor = Color.RED; // TODO: use a default from R.color...
-    private float mExampleDimension = 0; // TODO: use a default from R.dimen...
-    private Drawable mExampleDrawable;
+    private String mText; // TODO: use a default from R.string...
+    private int mColor = Color.RED; // TODO: use a default from R.color...
+    private float mTextSize = 0; // TODO: use a default from R.dimen...
+    private Drawable mIcon;
 
     private TextPaint mTextPaint;
     private float mTextWidth;
@@ -44,21 +44,21 @@ public class CalendarCellView extends View {
         final TypedArray a = getContext().obtainStyledAttributes(
                 attrs, R.styleable.CalendarCellView, defStyle, 0);
 
-        mExampleString = a.getString(
-                R.styleable.CalendarCellView_exampleString);
-        mExampleColor = a.getColor(
-                R.styleable.CalendarCellView_exampleColor,
-                mExampleColor);
+        mText = a.getString(
+                R.styleable.CalendarCellView_text);
+        mColor = a.getColor(
+                R.styleable.CalendarCellView_color,
+                mColor);
         // Use getDimensionPixelSize or getDimensionPixelOffset when dealing with
         // values that should fall on pixel boundaries.
-        mExampleDimension = a.getDimension(
-                R.styleable.CalendarCellView_exampleDimension,
-                mExampleDimension);
+        mTextSize = a.getDimension(
+                R.styleable.CalendarCellView_text_size,
+                mTextSize);
 
-        if (a.hasValue(R.styleable.CalendarCellView_exampleDrawable)) {
-            mExampleDrawable = a.getDrawable(
-                    R.styleable.CalendarCellView_exampleDrawable);
-            mExampleDrawable.setCallback(this);
+        if (a.hasValue(R.styleable.CalendarCellView_icon)) {
+            mIcon = a.getDrawable(
+                    R.styleable.CalendarCellView_icon);
+            mIcon.setCallback(this);
         }
 
         a.recycle();
@@ -73,9 +73,9 @@ public class CalendarCellView extends View {
     }
 
     private void invalidateTextPaintAndMeasurements() {
-        mTextPaint.setTextSize(mExampleDimension);
-        mTextPaint.setColor(mExampleColor);
-        mTextWidth = mTextPaint.measureText(mExampleString);
+        mTextPaint.setTextSize(mTextSize);
+        mTextPaint.setColor(mColor);
+        mTextWidth = mTextPaint.measureText(mText);
 
         Paint.FontMetrics fontMetrics = mTextPaint.getFontMetrics();
         mTextHeight = fontMetrics.bottom;
@@ -96,16 +96,16 @@ public class CalendarCellView extends View {
         int contentHeight = getHeight() - paddingTop - paddingBottom;
 
         // Draw the text.
-        canvas.drawText(mExampleString,
+        canvas.drawText(mText,
                 paddingLeft + (contentWidth - mTextWidth) / 2,
                 paddingTop + (contentHeight + mTextHeight) / 2,
                 mTextPaint);
 
         // Draw the example drawable on top of the text.
-        if (mExampleDrawable != null) {
-            mExampleDrawable.setBounds(paddingLeft, paddingTop,
+        if (mIcon != null) {
+            mIcon.setBounds(paddingLeft, paddingTop,
                     paddingLeft + contentWidth, paddingTop + contentHeight);
-            mExampleDrawable.draw(canvas);
+            mIcon.draw(canvas);
         }
     }
 
@@ -114,18 +114,18 @@ public class CalendarCellView extends View {
      *
      * @return The example string attribute value.
      */
-    public String getExampleString() {
-        return mExampleString;
+    public String getText() {
+        return mText;
     }
 
     /**
      * Sets the view's example string attribute value. In the example view, this string
      * is the text to draw.
      *
-     * @param exampleString The example string attribute value to use.
+     * @param text The example string attribute value to use.
      */
-    public void setExampleString(String exampleString) {
-        mExampleString = exampleString;
+    public void setText(String text) {
+        mText = text;
         invalidateTextPaintAndMeasurements();
     }
 
@@ -134,18 +134,18 @@ public class CalendarCellView extends View {
      *
      * @return The example color attribute value.
      */
-    public int getExampleColor() {
-        return mExampleColor;
+    public int getColor() {
+        return mColor;
     }
 
     /**
      * Sets the view's example color attribute value. In the example view, this color
      * is the font color.
      *
-     * @param exampleColor The example color attribute value to use.
+     * @param color The example color attribute value to use.
      */
-    public void setExampleColor(int exampleColor) {
-        mExampleColor = exampleColor;
+    public void setColor(int color) {
+        mColor = color;
         invalidateTextPaintAndMeasurements();
     }
 
@@ -154,18 +154,18 @@ public class CalendarCellView extends View {
      *
      * @return The example dimension attribute value.
      */
-    public float getExampleDimension() {
-        return mExampleDimension;
+    public float getTextSize() {
+        return mTextSize;
     }
 
     /**
      * Sets the view's example dimension attribute value. In the example view, this dimension
      * is the font size.
      *
-     * @param exampleDimension The example dimension attribute value to use.
+     * @param textSize The example dimension attribute value to use.
      */
-    public void setExampleDimension(float exampleDimension) {
-        mExampleDimension = exampleDimension;
+    public void setTextSize(float textSize) {
+        mTextSize = textSize;
         invalidateTextPaintAndMeasurements();
     }
 
@@ -174,17 +174,17 @@ public class CalendarCellView extends View {
      *
      * @return The example drawable attribute value.
      */
-    public Drawable getExampleDrawable() {
-        return mExampleDrawable;
+    public Drawable getIcon() {
+        return mIcon;
     }
 
     /**
      * Sets the view's example drawable attribute value. In the example view, this drawable is
      * drawn above the text.
      *
-     * @param exampleDrawable The example drawable attribute value to use.
+     * @param icon The example drawable attribute value to use.
      */
-    public void setExampleDrawable(Drawable exampleDrawable) {
-        mExampleDrawable = exampleDrawable;
+    public void setIcon(Drawable icon) {
+        mIcon = icon;
     }
 }

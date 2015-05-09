@@ -14,6 +14,7 @@ import android.view.MenuItem;
 public class MainActivity extends FragmentActivity {
 
     private ViewPager viewPager;
+    private CalendarViewPagerAdapter calendarViewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +31,17 @@ public class MainActivity extends FragmentActivity {
         actionBar.setTitle("My Profile");
         actionBar.setDisplayUseLogoEnabled(false);
 
+        initView();
 
-        // Init ViewPager
+
+    }
+
+    // Init ViewPager
+    public void initView() {
         viewPager = (ViewPager)findViewById(R.id.id_viewpager);
         // Declare an Adapter for ViewPager
-        CalendarViewPagerAdapter viewPagerAdapter = new CalendarViewPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(viewPagerAdapter);
+        calendarViewPagerAdapter = new CalendarViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(calendarViewPagerAdapter);
         viewPager.setCurrentItem(500);
 
     }

@@ -60,8 +60,6 @@ public class MonthFragment extends Fragment {
         monthFragmentAdapter = new MonthFragmentAdapter(rootView.getContext());
         gridView.setAdapter(monthFragmentAdapter);
         Calendar calendar = Calendar.getInstance();
-        TextView textView = new TextView(getActivity());
-        textView.setText(R.string.hello_blank_fragment);
         return rootView;
     }
 
