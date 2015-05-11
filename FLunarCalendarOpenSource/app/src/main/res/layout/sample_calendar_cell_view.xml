@@ -9,8 +9,6 @@
         android:background="#ccc"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:text_size="10sp"
-        app:color="#33b5e5"
-        app:text="Hello, CalendarCellView" />
+        />
 
 </FrameLayout>
