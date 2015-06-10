@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
-import java.util.Calendar;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,7 +27,9 @@ public class MonthFragment extends Fragment {
     private MonthFragmentAdapter monthFragmentAdapter;
 
     /**
-     * Factory method for this fragment class. Constructs a new fragment for the given page number.
+     * Create MonthFragment
+     * @param pageNumber    the index of month
+     * @return
      */
     public static MonthFragment create(int pageNumber) {
         MonthFragment monthFragment = new MonthFragment();
@@ -55,9 +55,8 @@ public class MonthFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.month_fragment_gridview, container, false);
         GridView gridView = (GridView)rootView.findViewById(R.id.id_month_gridview);
-        monthFragmentAdapter = new MonthFragmentAdapter(rootView.getContext());
+        monthFragmentAdapter = new MonthFragmentAdapter(rootView.getContext(), getResources(), mPageNumber);
         gridView.setAdapter(monthFragmentAdapter);
-        Calendar calendar = Calendar.getInstance();
         return rootView;
     }
 

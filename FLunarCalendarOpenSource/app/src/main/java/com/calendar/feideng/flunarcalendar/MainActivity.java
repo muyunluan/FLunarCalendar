@@ -15,6 +15,7 @@ public class MainActivity extends FragmentActivity {
 
     private ViewPager viewPager;
     private CalendarViewPagerAdapter calendarViewPagerAdapter;
+    private int defaultPageID = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,6 @@ public class MainActivity extends FragmentActivity {
         actionBar.setDisplayUseLogoEnabled(false);
 
         initView();
-
-
     }
 
     // Init ViewPager
@@ -42,8 +41,7 @@ public class MainActivity extends FragmentActivity {
         // Declare an Adapter for ViewPager
         calendarViewPagerAdapter = new CalendarViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(calendarViewPagerAdapter);
-        viewPager.setCurrentItem(500);
-
+        viewPager.setCurrentItem(defaultPageID);
     }
 
     // ViewPager adapter used to talk with Fragments
@@ -55,12 +53,13 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-           return MonthFragment.create(position);
+            //Log.i("","current page: " + position);
+            return MonthFragment.create(position);
         }
 
         @Override
         public int getCount() {
-            return 1000;
+            return 1000;//use this number because usually user will not scroll these many of pages
         }
     }
 
@@ -82,8 +81,6 @@ public class MainActivity extends FragmentActivity {
             case R.id.action_today:
                 return true;
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 

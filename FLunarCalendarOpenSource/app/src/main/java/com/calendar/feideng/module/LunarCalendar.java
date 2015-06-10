@@ -1,13 +1,16 @@
 package com.calendar.feideng.module;
 
 /**
- * Created by fdeng on 5/11/15.
+ * Created by fdeng on 5/13/15.
  */
+
+
 import java.util.Calendar;
 import java.util.Date;
 
 /**
- * 农历日历
+ * 农历日历</p>
+ * 算法及基础数据来自：http://blog.csdn.net/mostone/article/details/8461269
  *
  */
 public class LunarCalendar {

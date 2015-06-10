@@ -6,8 +6,13 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/id_gridview_cell_textview"
+        android:id="@+id/id_gridview_cell_gregorian_textview"
         android:layout_width="50dp"
         android:layout_height="50dp" />
+    <TextView
+        android:id="@+id/id_gridview_cell_lunar_textview"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
 
 </LinearLayout>
