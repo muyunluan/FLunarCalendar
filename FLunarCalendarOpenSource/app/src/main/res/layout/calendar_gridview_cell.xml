@@ -7,12 +7,10 @@
 
     <TextView
         android:id="@+id/id_gridview_cell_gregorian_textview"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
+        style="@style/style_calendar_cell_gregorian"/>
     <TextView
         android:id="@+id/id_gridview_cell_lunar_textview"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
+        style="@style/style_calendar_cell_lunar"/>
 
 
 </LinearLayout>

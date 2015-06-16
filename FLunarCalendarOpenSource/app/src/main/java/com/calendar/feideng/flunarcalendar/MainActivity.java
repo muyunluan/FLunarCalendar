@@ -11,11 +11,15 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.calendar.feideng.module.LunarCalendar;
+
+import java.util.Calendar;
+
 public class MainActivity extends FragmentActivity {
 
     private ViewPager viewPager;
     private CalendarViewPagerAdapter calendarViewPagerAdapter;
-    private int defaultPageID = 500;
+    private int todayMonthIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,15 @@ public class MainActivity extends FragmentActivity {
         // Declare an Adapter for ViewPager
         calendarViewPagerAdapter = new CalendarViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(calendarViewPagerAdapter);
-        viewPager.setCurrentItem(defaultPageID);
+        todayMonthIndex = getTodayMonthIndex();
+        viewPager.setCurrentItem(todayMonthIndex);
+    }
+
+    private int getTodayMonthIndex() {
+        Calendar today = Calendar.getInstance();
+        int offset = (today.get(Calendar.YEAR) - LunarCalendar.getMinYear())
+                * 12 + today.get(Calendar.MONTH);
+        return offset;
     }
 
     // ViewPager adapter used to talk with Fragments
@@ -53,13 +65,14 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            //Log.i("","current page: " + position);
+            //Log.i("", "current page: " + position);
             return MonthFragment.create(position);
         }
 
         @Override
         public int getCount() {
-            return 1000;//use this number because usually user will not scroll these many of pages
+            int years = LunarCalendar.getMaxYear() - LunarCalendar.getMinYear();
+            return years * 12;
         }
     }
 
