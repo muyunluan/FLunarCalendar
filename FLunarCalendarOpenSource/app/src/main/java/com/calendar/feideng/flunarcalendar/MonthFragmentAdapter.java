@@ -67,6 +67,14 @@ public class MonthFragmentAdapter extends BaseAdapter {
 //        }
 //        CalendarCellView calendarCellView = (CalendarCellView) convertView.findViewById(R.id.id_calendar_cell_view);
 
+        //using another calendar
+//        Date myDate = (Date) getItem(position);
+//        Calendar calCalendar = Calendar.getInstance();
+//        calCalendar.setTime(myDate);
+//        int day = myDate.getDate();
+//        gregorianTextView.setText(String.valueOf(day));
+
         return convertView;
     }
+
 }

@@ -35,57 +35,9 @@ public class CalendarCell {
         analyzeDate(mPosition);
     }
 
-
-    public String getDateString(int position) {
-        LunarCalendar date = new LunarCalendar(firstDayMillis +
-                (position - (position / 8) - 1) * LunarCalendar.DAY_MILLIS);
-
-        String dateStr = "";
-        if(position % 8 == 0) {
-            dateStr = String.valueOf(date.getGregorianDate(Calendar.WEEK_OF_YEAR));
-            return  dateStr;
-        }
-        // 开始日期处理
-        boolean isFestival = false, isSolarTerm = false;
-        int gregorianDay = date.getGregorianDate(Calendar.DAY_OF_MONTH);
-        // 判断是否为本月日期
-        boolean isOutOfRange = ((position % 8 != 0) &&
-                (position < 8 && gregorianDay > 7) || (position > 8 && gregorianDay < position - 7 - 6));
-        dateStr = String.valueOf(gregorianDay);
-
-        // 农历节日 > 公历节日 > 农历月份 > 二十四节气 > 农历日
-        int index = date.getLunarFestival();
-        if (index >= 0){
-            // 农历节日
-            dateStr = String.valueOf(fomatter.getLunarFestivalName(index));
-            isFestival = true;
-        }else{
-            index = date.getGregorianFestival();
-            if (index >= 0){
-                // 公历节日
-                dateStr = String.valueOf(fomatter.getGregorianFestivalName(index));
-                isFestival = true;
-            }else if (date.getLunar(LunarCalendar.LUNAR_DAY) == 1){
-                // 初一,显示月份
-                dateStr = String.valueOf(fomatter.getMonthName(date));
-            }else if(!isOutOfRange && gregorianDay == solarTerm1){
-                // 节气1
-                dateStr = String.valueOf(fomatter.getSolarTermName(date.getGregorianDate(Calendar.MONTH) * 2));
-                isSolarTerm = true;
-            }else if(!isOutOfRange && gregorianDay == solarTerm2){
-                // 节气2
-                dateStr = String.valueOf(fomatter.getSolarTermName(date.getGregorianDate(Calendar.MONTH) * 2 + 1));
-                isSolarTerm = true;
-            }else{
-                dateStr = String.valueOf(fomatter.getDayName(date));
-            }
-        }
-        return dateStr;
-    }
-
     private void analyzeDate(int position) {
         LunarCalendar date = new LunarCalendar(firstDayMillis +
-                (position - (position / 8) - 1) * LunarCalendar.DAY_MILLIS);
+                position * LunarCalendar.DAY_MILLIS);
 
         String dateStr = "";
         if(position % 8 == 0) {
@@ -97,6 +49,8 @@ public class CalendarCell {
         // 判断是否为本月日期
         boolean isOutOfRange = ((position % 8 != 0) &&
                 (position < 8 && gregorianDay > 7) || (position > 8 && gregorianDay < position - 7 - 6));
+
+
         mGregorianDateString = String.valueOf(gregorianDay);
 
         // 农历节日 > 公历节日 > 农历月份 > 二十四节气 > 农历日
