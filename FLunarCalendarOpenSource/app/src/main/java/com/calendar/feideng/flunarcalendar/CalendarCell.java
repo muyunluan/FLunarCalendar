@@ -39,19 +39,24 @@ public class CalendarCell {
         LunarCalendar date = new LunarCalendar(firstDayMillis +
                 position * LunarCalendar.DAY_MILLIS);
 
+        //get gregorian date
+        int gregorianDay = date.getGregorianDate(Calendar.DAY_OF_MONTH);
+        mGregorianDateString = String.valueOf(gregorianDay);
+
+
         String dateStr = "";
         if(position % 8 == 0) {
             dateStr = String.valueOf(date.getGregorianDate(Calendar.WEEK_OF_YEAR));
         }
         // 开始日期处理
         boolean isFestival = false, isSolarTerm = false;
-        int gregorianDay = date.getGregorianDate(Calendar.DAY_OF_MONTH);
+
         // 判断是否为本月日期
         boolean isOutOfRange = ((position % 8 != 0) &&
                 (position < 8 && gregorianDay > 7) || (position > 8 && gregorianDay < position - 7 - 6));
 
 
-        mGregorianDateString = String.valueOf(gregorianDay);
+
 
         // 农历节日 > 公历节日 > 农历月份 > 二十四节气 > 农历日
         int index = date.getLunarFestival();

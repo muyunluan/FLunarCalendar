@@ -61,18 +61,19 @@ public class MonthFragmentAdapter extends BaseAdapter {
 
         gregorianTextView.setText(cell.getGregorianDateString());
         lunarTextView.setText(cell.getLunarDateString());
+
+        //check weekends
+        if (mPosition % 7 == 0 || mPosition % 7 == 6) {
+            gregorianTextView.setTextColor(mResources.getColor(R.color.weekends));
+        }
+
         // using custom view
 //        if(convertView == null) {
 //            convertView = LayoutInflater.from(mContext).inflate(R.layout.sample_calendar_cell_view, null);
 //        }
 //        CalendarCellView calendarCellView = (CalendarCellView) convertView.findViewById(R.id.id_calendar_cell_view);
 
-        //using another calendar
-//        Date myDate = (Date) getItem(position);
-//        Calendar calCalendar = Calendar.getInstance();
-//        calCalendar.setTime(myDate);
-//        int day = myDate.getDate();
-//        gregorianTextView.setText(String.valueOf(day));
+
 
         return convertView;
     }

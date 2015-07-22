@@ -18,7 +18,9 @@
 	<color name="br0">#ffffc5dd</color>
 	<color name="Text">#603b07</color>
 	<color name="ToDayText">#ffc2a53d</color>
-	
-	
+
+	<color name="gridBackground">#2E8B57</color>
+	<color name="weekends">#ffcc00ff</color>
+
 	<color name="Noteback">#FFCC99</color>
 </resources>

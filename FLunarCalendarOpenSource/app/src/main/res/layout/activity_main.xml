@@ -9,6 +9,7 @@
         android:id="@+id/id_week_header"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:background="@color/gridBackground"
         android:orientation="horizontal">
 
         <TextView

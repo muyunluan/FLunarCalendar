@@ -17,6 +17,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:textSize">@dimen/activity_horizontal_margin</item>
         <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="style_calendar_cell_gregorian">
@@ -25,6 +26,7 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">26sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/white</item>
     </style>
 
     <style name="style_calendar_cell_lunar">
@@ -33,6 +35,7 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">12sp</item>
         <item name="android:paddingBottom">2dp</item>
+        <item name="android:background">@color/white</item>
     </style>
 
     <style name="style_calendar_bottom_container">
