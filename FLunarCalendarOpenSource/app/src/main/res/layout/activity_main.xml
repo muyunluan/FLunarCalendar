@@ -8,7 +8,7 @@
     <LinearLayout
         android:id="@+id/id_week_header"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:background="@color/gridBackground"
         android:orientation="horizontal">
 
@@ -48,17 +48,17 @@
         android:layout_weight="1">
     </android.support.v4.view.ViewPager>
 
-    <LinearLayout
-        android:id="@+id/id_bottom_event"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/id_textview_event"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="test"/>
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:id="@+id/id_bottom_event"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+            <!--android:id="@+id/id_textview_event"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="test"/>-->
+    <!--</LinearLayout>-->
 
     <!--<LinearLayout-->
         <!--android:id="@+id/id_bottom_action"-->

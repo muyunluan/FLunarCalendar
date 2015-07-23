@@ -36,8 +36,7 @@ public class CalendarCell {
     }
 
     private void analyzeDate(int position) {
-        LunarCalendar date = new LunarCalendar(firstDayMillis +
-                position * LunarCalendar.DAY_MILLIS);
+        LunarCalendar date = new LunarCalendar(firstDayMillis + position * LunarCalendar.DAY_MILLIS);
 
         //get gregorian date
         int gregorianDay = date.getGregorianDate(Calendar.DAY_OF_MONTH);
