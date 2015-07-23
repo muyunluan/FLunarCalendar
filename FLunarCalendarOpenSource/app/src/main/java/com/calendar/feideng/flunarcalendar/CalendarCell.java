@@ -17,10 +17,10 @@ public class CalendarCell {
     private int solarTerm1 = 0;
     private int solarTerm2 = 0;
     private DateFormatter fomatter;
-    private int mPosition = 0;
+
     private String mGregorianDateString = "";
     private String mLunarDateString = "";
-
+    private int mPosition = 0;
     public CalendarCell(Resources resources, int monthIndex, int position) {
         int year = LunarCalendar.getMinYear() + (monthIndex / 12);
         int month = monthIndex % 12;
