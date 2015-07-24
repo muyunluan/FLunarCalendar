@@ -22,7 +22,8 @@
 	<color name="gridBackground">#FF529bd0</color>
 	<color name="weekends">#ffcc00ff</color>
 	<color name="lunarFestival">#ff00ccee</color>
-	<color name="gregorianFestival">#ffffccee</color>
-	<color name="solarTerm">#ee33ff44</color>
+	<color name="gregorianFestival">#00ff7f</color>
+	<color name="solarTerm">#ff7f50</color>
+	<color name="outOfRange">#e5e5e5</color>
 	<color name="Noteback">#FFCC99</color>
 </resources>

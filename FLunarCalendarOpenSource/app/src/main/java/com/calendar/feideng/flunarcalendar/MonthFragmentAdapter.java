@@ -42,8 +42,8 @@ public class MonthFragmentAdapter extends BaseAdapter {
         mContext = context;
         mResources = resources;
         mMonthIndex = monthIndex;
-        int year = LunarCalendar.getMinYear() + (monthIndex / 12);
-        int month = monthIndex % 12;
+        int year = LunarCalendar.getMinYear() + (mMonthIndex / 12);
+        int month = mMonthIndex % 12;
         Calendar date = new GregorianCalendar(year, month, 1);
         int offset = 1 - date.get(Calendar.DAY_OF_WEEK);
         date.add(Calendar.DAY_OF_MONTH, offset);
@@ -78,16 +78,8 @@ public class MonthFragmentAdapter extends BaseAdapter {
         }
         TextView gregorianTextView = (TextView) convertView.findViewById(R.id.id_gridview_cell_gregorian_textview);
         TextView lunarTextView = (TextView) convertView.findViewById(R.id.id_gridview_cell_lunar_textview);
-//        cell = new CalendarCell(mResources, mMonthIndex, mPosition);
-//        //Log.i("", mPosition + "- month index: " + mMonthIndex);
-//
-//        gregorianTextView.setText(cell.getGregorianDateString());
-//        lunarTextView.setText(cell.getLunarDateString());
 
-        //check weekends
-        if (mPosition % 7 == 0 || mPosition % 7 == 6) {
-            gregorianTextView.setTextColor(mResources.getColor(R.color.weekends));
-        }
+        //start to calculate date
         LunarCalendar date = new LunarCalendar(firstDayMillis + position * LunarCalendar.DAY_MILLIS);
 
         //get gregorian date
@@ -95,50 +87,43 @@ public class MonthFragmentAdapter extends BaseAdapter {
         mGregorianDateString = String.valueOf(gregorianDay);
         gregorianTextView.setText(mGregorianDateString);
 
-        String dateStr = "";
-        if(position % 8 == 0) {
-            dateStr = String.valueOf(date.getGregorianDate(Calendar.WEEK_OF_YEAR));
-        }
-        // 开始日期处理
-        boolean isFestival = false, isSolarTerm = false;
-
-        // 判断是否为本月日期
-        boolean isOutOfRange = ((position % 8 != 0) &&
-                (position < 8 && gregorianDay > 7) || (position > 8 && gregorianDay < position - 7 - 6));
-
-
-        // 农历节日 > 公历节日 > 农历月份 > 二十四节气 > 农历日
+        //check luna festival and solar date
         int index = date.getLunarFestival();
         if (index >= 0){
-            // 农历节日
             mLunarDateString = String.valueOf(fomatter.getLunarFestivalName(index));
             lunarTextView.setTextColor(mResources.getColor(R.color.lunarFestival));
-            isFestival = true;
         }else{
             index = date.getGregorianFestival();
             if (index >= 0){
-                // 公历节日
                 mLunarDateString = String.valueOf(fomatter.getGregorianFestivalName(index));
                 lunarTextView.setTextColor(mResources.getColor(R.color.gregorianFestival));
-                isFestival = true;
             }else if (date.getLunar(LunarCalendar.LUNAR_DAY) == 1){
-                // 初一,显示月份
                 mLunarDateString = String.valueOf(fomatter.getMonthName(date));
-            }else if(!isOutOfRange && gregorianDay == solarTerm1){
-                // 节气1
+            }else if(gregorianDay == solarTerm1){
                 mLunarDateString = String.valueOf(fomatter.getSolarTermName(date.getGregorianDate(Calendar.MONTH) * 2));
                 lunarTextView.setTextColor(mResources.getColor(R.color.solarTerm));
-                isSolarTerm = true;
-            }else if(!isOutOfRange && gregorianDay == solarTerm2){
-                // 节气2
+            }else if(gregorianDay == solarTerm2){
                 mLunarDateString = String.valueOf(fomatter.getSolarTermName(date.getGregorianDate(Calendar.MONTH) * 2 + 1));
                 lunarTextView.setTextColor(mResources.getColor(R.color.solarTerm));
-                isSolarTerm = true;
             }else{
                 mLunarDateString = String.valueOf(fomatter.getDayName(date));
             }
         }
         lunarTextView.setText(mLunarDateString);
+
+        //check if it is in current month
+        //1. check first 7 dates, if large than 7, then must belong to last month
+        //2. check last 14 dates (since there are 42 items per page), if less than 15, then must belong to next month
+        boolean isOutOfRange = ((mPosition < 7 && gregorianDay > 7) || (mPosition > 27 && gregorianDay < 2 * 7 + 1));
+        if (isOutOfRange) {
+            gregorianTextView.setTextColor(mResources.getColor(R.color.outOfRange));
+            lunarTextView.setTextColor(mResources.getColor(R.color.outOfRange));
+        }
+
+        //check weekends
+        if (!isOutOfRange && (mPosition % 7 == 0 || mPosition % 7 == 6)) {
+            gregorianTextView.setTextColor(mResources.getColor(R.color.weekends));
+        }
 
         return convertView;
     }
