@@ -141,6 +141,7 @@ public class LunarCalendar {
 
     public LunarCalendar(long milliSeconds){
         Calendar date = Calendar.getInstance();
+        date.clear();
         date.setTimeInMillis(milliSeconds);
         lunarFields = new int[LUNAR_FIELD_COUNT];
         gregorianDate = date;

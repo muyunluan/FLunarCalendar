@@ -26,4 +26,5 @@
 	<color name="solarTerm">#ff7f50</color>
 	<color name="outOfRange">#e5e5e5</color>
 	<color name="Noteback">#FFCC99</color>
+	<color name="today">#06c</color>
 </resources>

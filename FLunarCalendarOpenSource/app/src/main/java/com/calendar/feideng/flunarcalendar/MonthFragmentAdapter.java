@@ -2,6 +2,7 @@ package com.calendar.feideng.flunarcalendar;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.calendar.feideng.module.DateFormatter;
 import com.calendar.feideng.module.LunarCalendar;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -33,7 +35,6 @@ public class MonthFragmentAdapter extends BaseAdapter {
     private String mGregorianDateString = "";
     private String mLunarDateString = "";
 
-   // private CalendarCell cell;
     public MonthFragmentAdapter(Context context) {
         mContext = context;
     }
@@ -45,9 +46,11 @@ public class MonthFragmentAdapter extends BaseAdapter {
         int year = LunarCalendar.getMinYear() + (mMonthIndex / 12);
         int month = mMonthIndex % 12;
         Calendar date = new GregorianCalendar(year, month, 1);
-        int offset = 1 - date.get(Calendar.DAY_OF_WEEK);
-        date.add(Calendar.DAY_OF_MONTH, offset);
+        date.add(Calendar.DAY_OF_YEAR, Calendar.SUNDAY - date.get(Calendar.DAY_OF_WEEK));
         firstDayMillis = date.getTimeInMillis();
+        if(month == 11) {
+            Log.i("time stamp", String.valueOf(firstDayMillis));
+        }
         solarTerm1 = LunarCalendar.getSolarTerm(year, month * 2 + 1);
         solarTerm2 = LunarCalendar.getSolarTerm(year, month * 2 + 2);
         fomatter = new DateFormatter(resources);
@@ -86,6 +89,13 @@ public class MonthFragmentAdapter extends BaseAdapter {
         int gregorianDay = date.getGregorianDate(Calendar.DAY_OF_MONTH);
         mGregorianDateString = String.valueOf(gregorianDay);
         gregorianTextView.setText(mGregorianDateString);
+        if(mMonthIndex % 12 == 11) {
+            if (position == 0 || position == 1) {
+                Log.i("date", mGregorianDateString);
+            }
+        }
+        Date d = new Date();
+
 
         //check luna festival and solar date
         int index = date.getLunarFestival();
@@ -119,11 +129,19 @@ public class MonthFragmentAdapter extends BaseAdapter {
             gregorianTextView.setTextColor(mResources.getColor(R.color.outOfRange));
             lunarTextView.setTextColor(mResources.getColor(R.color.outOfRange));
         }
+        else {
+            //check weekends
+            if (mPosition % 7 == 0 || mPosition % 7 == 6) {
+                gregorianTextView.setTextColor(mResources.getColor(R.color.weekends));
+            }
 
-        //check weekends
-        if (!isOutOfRange && (mPosition % 7 == 0 || mPosition % 7 == 6)) {
-            gregorianTextView.setTextColor(mResources.getColor(R.color.weekends));
+            //check if it is today
+            if (date.isToday()) {
+                gregorianTextView.setBackgroundColor(mResources.getColor(R.color.today));
+                lunarTextView.setBackgroundColor(mResources.getColor(R.color.today));
+            }
         }
+
 
         return convertView;
     }

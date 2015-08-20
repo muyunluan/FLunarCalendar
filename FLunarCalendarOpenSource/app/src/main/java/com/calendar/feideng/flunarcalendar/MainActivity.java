@@ -29,11 +29,11 @@ public class MainActivity extends FragmentActivity {
         // Configure action bar
         ActionBar actionBar = getActionBar();
         // Enable navigating up with app icon
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(false);
         // Disable app icon
         actionBar.setDisplayShowHomeEnabled(false);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle("My Profile");
+        actionBar.setDisplayShowTitleEnabled(false);
+        //actionBar.setTitle("My Profile");
         actionBar.setDisplayUseLogoEnabled(false);
 
         initView();
@@ -92,7 +92,8 @@ public class MainActivity extends FragmentActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_today:
-                return true;
+                viewPager.setCurrentItem(todayMonthIndex);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
